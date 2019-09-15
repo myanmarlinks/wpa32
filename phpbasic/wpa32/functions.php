@@ -1,6 +1,7 @@
 <?php
 /**
  * must have app/view folder 
+ * usage - _get_view("home", $data)
  */
 function _get_view($view, $data = null) {
     $file = DD . "/app/view/" . $view . ".php";
@@ -17,10 +18,10 @@ function _get_view($view, $data = null) {
 }
 
 /**
- * must have app/config folder
+ * config reader from app/config folder. Must have app/config folder _config_get("app.database")
  */
 
- function _config_get($config_value) {
+ function _config_get(string $config_value) {
      $e_value = explode(".", $config_value);
      $config_file = DD . "/app/config/" . $e_value[0] . ".php";
      if(file_exists($config_file)) {
@@ -30,8 +31,6 @@ function _get_view($view, $data = null) {
         } else {
             trigger_error("Config key not found", E_USER_ERROR);
         }
-        
-
      } else {
          trigger_error("Config file not found!", E_USER_ERROR);
      }
