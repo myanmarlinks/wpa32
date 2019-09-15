@@ -16,7 +16,7 @@ function _HomeController() {
         ],
         "classes" => [
         [ "id" => 1, "name"  => "WPF"],
-        [ "id" => 1, "name"  => "WPA"]
+        [ "id" => 2, "name"  => "WPA"]
         ],
         "batches" => [
             [ "id" => 1, "class_id" => 1, "batch" => 1 ],

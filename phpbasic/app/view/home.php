@@ -28,11 +28,23 @@
                             </tr>
                          <?php } ?>
                     </tbody>
-                </table>
-                
+                </table>  
             </div>
         </div>
+
     </div>
-    
+    <?php foreach($batches as $ba) { ?> 
+        <?php var_dump($ba); ?>
+        <h1> <?php echo $ba['id']; ?></h1>
+        <?php 
+        $class = [];
+        foreach($classes as $class) {
+            if($class['id'] == $ba['class_id']) {
+                $class = $class["name"];
+            }
+            var_dump($class);
+        }
+        ?>
+    <?php } ?>
 </body>
 </html>
