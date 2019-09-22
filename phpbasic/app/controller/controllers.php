@@ -41,22 +41,17 @@ function _PageController() {
     _get_view("page", $data);
 }
 
-function _LoginController() {
+function _RegisterController() {
     $hostname = _config_get("database.hostname");
-    $username = _config_get("database.username");
-    $password = _config_get("database.password");
+    $db_username = _config_get("database.username");
+    $db_password = _config_get("database.password");
     $dbname = _config_get("database.dbname");
-
-    $link = mysqli_connect($hostname, $username, $password, $dbname);
- 
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-    } 
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
+
         if(_check_empty($username)) {
             _dump("User Name is Empty");  
         } 
@@ -65,6 +60,35 @@ function _LoginController() {
         }
         if(_check_empty($confirm_password)) {
             _dump("Confirm Password is empty");
+        }
+        if(_check_equal($password, $confirm_password)){
+            _dump("Password does not match!");
+        }
+        if(_check_count($password, 4)) {
+            _dump("Password need to b 4 chars", true);
+        }
+
+        $link = mysqli_connect($hostname, $db_username, $db_password, $dbname);
+ 
+        if($link === false){
+            die("ERROR: Could not connect. " . mysqli_connect_error());
+        } 
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+         
+        if($stmt = mysqli_prepare($link, $sql)){
+            
+            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+        
+            $param_username = $username;
+            $param_password = password_hash($password, PASSWORD_DEFAULT); 
+            
+            if(mysqli_stmt_execute($stmt)){
+                // Redirect to login page
+                header("location: index.php");
+            } else{
+                echo "Something went wrong. Please try again later.";
+            }
+            mysqli_stmt_close($stmt);
         }
     }
     _get_view("login");

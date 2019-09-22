@@ -13,7 +13,7 @@
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
-        <form action="http://localhost:8000/index.php?page=login" method="post">
+        <form action="http://localhost:8000/index.php?page=register" method="post">
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="">

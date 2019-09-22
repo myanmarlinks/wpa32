@@ -63,12 +63,28 @@ function _get_view($view, $data = null) {
       }
   }
 
-  function _check_empty($value) {
-      if(empty(trim($value))) {
-          return true;
-      }
-      return false;
-  }
+function _check_empty($value) {
+    if(empty(trim($value))) {
+        return true;
+    }
+    return false;
+}
+
+function _check_equal($first, $second) {
+    if($first != $second) {
+        return true;
+    }
+    return false;
+}
+
+function _check_count($value, $count = 1) {
+    if(strlen($value) < $count) {
+        return true;
+    }
+    return false;
+}
+
+
 
 
 ?>
