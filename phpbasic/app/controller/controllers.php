@@ -52,6 +52,21 @@ function _LoginController() {
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
     } 
+
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST["username"];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+        if(_check_empty($username)) {
+            _dump("User Name is Empty");  
+        } 
+        if(_check_empty($password)) {
+            _dump("Password is empty");
+        }
+        if(_check_empty($confirm_password)) {
+            _dump("Confirm Password is empty");
+        }
+    }
     _get_view("login");
 }
  ?>

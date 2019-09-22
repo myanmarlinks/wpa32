@@ -56,5 +56,19 @@ function _get_view($view, $data = null) {
 
   }
 
+  function _dump($value, $die = false) {
+      var_dump($value);
+      if($die == true) {
+          die();
+      }
+  }
+
+  function _check_empty($value) {
+      if(empty(trim($value))) {
+          return true;
+      }
+      return false;
+  }
+
 
 ?>
