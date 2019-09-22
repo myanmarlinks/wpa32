@@ -1,5 +1,8 @@
 <?php
 
 return [
-    'database'  => 'mysql'
+    'hostname'  => 'localhost',
+    'username'  => 'root',
+    'password'  => '',
+    'dbname'    => 'wpa32db'
 ];

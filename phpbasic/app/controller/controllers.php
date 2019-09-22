@@ -41,4 +41,17 @@ function _PageController() {
     _get_view("page", $data);
 }
 
-?>
+function _LoginController() {
+    $hostname = _config_get("database.hostname");
+    $username = _config_get("database.username");
+    $password = _config_get("database.password");
+    $dbname = _config_get("database.dbname");
+
+    $link = mysqli_connect($hostname, $username, $password, $dbname);
+ 
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+    } 
+    _get_view("login");
+}
+ ?>
