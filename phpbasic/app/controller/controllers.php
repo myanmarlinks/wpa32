@@ -83,7 +83,7 @@ function _RegisterController() {
             $param_password = password_hash($password, PASSWORD_DEFAULT); 
             
             if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
+                // Redirect to index page
                 header("location: index.php");
             } else{
                 echo "Something went wrong. Please try again later.";
@@ -91,6 +91,22 @@ function _RegisterController() {
             mysqli_stmt_close($stmt);
         }
     }
+    _get_view("register");
+}
+
+function _LoginController() {
+    session_start();
+    if(isset($_SESSION["loggedin"]) && $_SESSION    ["loggedin"] === true){
+       header("location: index.php?page=welcome");
+        exit;
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST["username"];
+        $password = $_POST['password'];
+
+    }
     _get_view("login");
+
 }
  ?>
