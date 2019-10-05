@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <input v-model="message" type="text" />
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+        <br>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    <script>
+        // app.todos.push({text: "Hello Another One"})
+        var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue!',
+                    todos: [
+                        { text: "Learn JavaScript" },
+                        { text: "Learn Vue" },
+                        { text: "Build Something awesome" }
+                    ]
+                },
+                methods: {
+                    reverseMessage: function() {
+                        this.message = this.message.split('').reverse().join('')
+                    }
+                }
+            })
+    </script>
+</body>
+</html>
