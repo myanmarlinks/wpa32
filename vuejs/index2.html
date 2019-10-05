@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="item in myList">
+                {{ item.text }}
+            </li>
+        </ol>
+        <ul>
+            <todo-item
+                v-for="item in myList"
+                v-bind:item="item"
+                v-bind:key="item.id"></todo-item>
+        </ul>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            props: ['item'],
+            template: "<li>{{ item.text }}</li>"
+        })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                myList: [
+                    {id: 0, text: "Hello World"},
+                    {id: 1, text: "How do you do?"},
+                    {id: 2, text: "Where do you live?"}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
