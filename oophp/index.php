@@ -1,32 +1,33 @@
 <?php
-abstract class Animal { // can't use direct declare
-    public $name;
-    public function eat() {
-        echo "EAT! <br>";
+    // method chain
+    class Programmer {
+        public $name;
+        public function __construct($name) {
+            $this->name = $name;
+        }
+        public function eat($thing) {
+            echo "Eat $thing <br>";
+            return $this;
+        }
+        public function sleep($time) {
+            echo "Sleep $time <br>";
+            return $this;
+        }
+        public function code($language) {
+            echo "Code $language <br>";
+            return $this;
+        }
+        public function repeat() {
+            echo "Repeat! <br>";
+        }
     }
-}
-trait Mammal {
-    public $color = "red <br>";
-    public function run() {
-        echo "RUN! <br>";
-    }
-}
-trait Predator {
-    public function chaung() {
-        echo "CHAUNG! <br>";
-    }
-}
-class Dog extends Animal {    
-    use Mammal, Predator;
-
-}
-class Cat extends Animal {
-    use Mammal;
-}
-$dog = new Dog();
-$dog->name = "Aung Net!";
-$dog->eat();
-$dog->chaung();
-echo $dog->color;
-$dog->run();
+    $programmer = new Programmer("Shine Htet");
+    $programmer->code("C#")->eat("Burger")->sleep(30)->repeat();
+    $pro = new Programmer("Aung Thuta");
+    $pro->repeat();
+    $proTwo = new Programmer("Foo");
+    $proTwo->eat("Dan Baut")
+        ->sleep(8)
+        ->code("PHP")
+        ->repeat();
 ?>
