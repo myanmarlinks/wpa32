@@ -36,7 +36,6 @@ class DB extends PDO {
 		echo "DB Connected! <br>";
     }
     public function insert(array $data) {
-        
         $key_string = "";
         $question_string = "";
         foreach ($data as $key => $value) {
