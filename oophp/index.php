@@ -1,6 +1,8 @@
 <?php
 $value = DB::table("users")->get();
+$count = DB::table("users")->count();
 var_dump($value);
+var_dump($count);
 
 class DB extends PDO {
     private static $_instance;
@@ -21,9 +23,14 @@ class DB extends PDO {
 		$pass = ""; 
 		$dsn =  $engine . ":host=" . $host . ";port=" 
             . $port . ";dbname=" . $database;
-        var_dump($dsn);
 		parent::__construct($dsn, $user, $pass);
 		echo "DB Connected! <br>";
+    }
+    public function count() {
+        $sql = "SELECT COUNT(*) from " . $this->table_name;
+        $result = $this->query($sql);
+        
+        return $result->fetchColumn();
     }
     public function get() {
         $sql = "SELECT * FROM " . $this->table_name;
