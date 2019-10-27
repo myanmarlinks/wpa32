@@ -8,20 +8,36 @@ use App\Car\Toyota;
 use App\Car\Hyundai;
 use App\Application\Application;
 
-Toyota::honk();
-Hyundai::honk();
-Application::shout();
+Application::add(new Dog());
+Application::add(new Cat());
+$dog = Application::get("dog");
 
-// create a log channel
-$log = new Logger('name');
-$log->pushHandler(new StreamHandler(DD . '/app/log/test.log', Logger::WARNING));
+class Cat {
+    public function meow() {
+        echo "MEOW! <br>";
+    }
+}
 
-// add records to the log
-$log->warning('Foo');
-$log->error('Bar');
+class Dog {
+    public function bark() {
+        echo "BARK! <br>";
+    }
+}
 
-testFun();
-dump("Hello World");
-Config::get();
+// Toyota::honk();
+// Hyundai::honk();
+// Application::shout();
+
+// // create a log channel
+// $log = new Logger('name');
+// $log->pushHandler(new StreamHandler(DD . '/app/log/test.log', Logger::WARNING));
+
+// // add records to the log
+// $log->warning('Foo');
+// $log->error('Bar');
+
+// testFun();
+// dump("Hello World");
+// Config::get();
 
 ?>
