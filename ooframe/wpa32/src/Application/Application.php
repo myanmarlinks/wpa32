@@ -7,7 +7,6 @@ class Application {
 	static public function add($object, $name = null) {
         $name = (!is_null($name)) ?: get_class($object);
         $name = strtolower($name);
-
 		$return = null;
 		if(isset(self::$_store[$name])) {
 			$return = self::$_store[$name];
