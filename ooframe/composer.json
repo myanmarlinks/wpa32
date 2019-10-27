@@ -1,0 +1,10 @@
+{
+    "require": {
+        "monolog/monolog": "^2.0"
+    },
+    "autoload": {
+        "files": [
+            "wpa32/functions.php"
+        ]
+    }
+}

@@ -8,6 +8,7 @@ $user = [
 ];
 DB::table("users")->insert($user);
 DB::table("users")->insert(['username' => 'Aung Aung', 'password' => password_hash("123456", PASSWORD_DEFAULT)]);
+DB::table("users")->delete(1);
 var_dump($value);
 var_dump($count);
 var_dump($user);
