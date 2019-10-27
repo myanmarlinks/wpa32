@@ -14,6 +14,7 @@ $log->warning('Foo');
 $log->error('Bar');
 
 testFun();
-dump("Hello World", true);
+dump("Hello World");
+Config::get();
 
 ?>

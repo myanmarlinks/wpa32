@@ -5,6 +5,9 @@
     "autoload": {
         "files": [
             "wpa32/functions.php"
+        ],
+        "classmap": [
+            "wpa32/providers/"
         ]
     }
 }
