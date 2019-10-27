@@ -4,6 +4,13 @@ require DD . '/vendor/autoload.php';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use App\Car\Toyota;
+use App\Car\Hyundai;
+use App\Application\Application;
+
+Toyota::honk();
+Hyundai::honk();
+Application::shout();
 
 // create a log channel
 $log = new Logger('name');
